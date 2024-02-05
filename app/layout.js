@@ -1,7 +1,6 @@
-import { Inter } from "next/font/google";
+import Navbar from "./components/Navbar";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <NextTopLoader color="#ca8a04" height={4} showSpinner={false} />
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
