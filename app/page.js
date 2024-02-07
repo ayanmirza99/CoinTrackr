@@ -24,7 +24,7 @@ const page = () => {
         {loading ? (
           ""
         ) : (
-          <div className="px-[4vw] lg:px-[2vw] pt-[3vw] lg:pt-[1vw] font-semibold text-[1.5rem] lg:text-[3rem] text-[#ca8a04]">
+          <div className="px-[4.4vw] lg:px-[2.4vw] pt-[3vw] lg:pt-[1vw] font-semibold text-[1.5rem] lg:text-[3rem] text-[#ca8a04]">
             Exchanges
           </div>
         )}
