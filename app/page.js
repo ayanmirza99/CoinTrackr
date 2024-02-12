@@ -2,7 +2,7 @@
 import axios from "axios";
 import Exchanges from "./components/Exchanges";
 import { useEffect, useState } from "react";
-import { baseURL } from "./components/baseURL";
+import { baseURL } from "./components/baseData";
 
 const page = () => {
   const [exchanges, setExchanges] = useState([]);

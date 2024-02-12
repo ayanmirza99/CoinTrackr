@@ -2,9 +2,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { TailSpin } from "react-loader-spinner";
-import { baseURL } from "../components/baseURL";
+import { baseURL } from "../components/baseData";
 import { motion } from "framer-motion";
 import { FaAngleDown } from "react-icons/fa";
+import { FaArrowDownLong } from "react-icons/fa6";
+import { currencies } from "../components/baseData";
+import Link from "next/link";
 
 const page = () => {
   const [coins, setCoins] = useState([]);
@@ -16,36 +19,36 @@ const page = () => {
     code: "usd",
   });
 
-  const currencies = [
-    {
-      name: "Pakistani Rupee",
-      code: "pkr",
-    },
-    {
-      name: "Euro",
-      code: "eur",
-    },
-    {
-      name: "United States Dollar",
-      code: "usd",
-    },
-    {
-      name: "Indian Rupee",
-      code: "inr",
-    },
-    {
-      name: "Japanese Yen",
-      code: "jpy",
-    },
-    {
-      name: "Kuwaiti Dinar",
-      code: "kwd",
-    },
-    {
-      name: "Canadian Dollar",
-      code: "cad",
-    },
-  ];
+  // const currencies = [
+  //   {
+  //     name: "Pakistani Rupee",
+  //     code: "pkr",
+  //   },
+  //   {
+  //     name: "Euro",
+  //     code: "eur",
+  //   },
+  //   {
+  //     name: "United States Dollar",
+  //     code: "usd",
+  //   },
+  //   {
+  //     name: "Indian Rupee",
+  //     code: "inr",
+  //   },
+  //   {
+  //     name: "Japanese Yen",
+  //     code: "jpy",
+  //   },
+  //   {
+  //     name: "Kuwaiti Dinar",
+  //     code: "kwd",
+  //   },
+  //   {
+  //     name: "Canadian Dollar",
+  //     code: "cad",
+  //   },
+  // ];
 
   const getCoins = async () => {
     try {
@@ -67,7 +70,7 @@ const page = () => {
 
   if (loading && error === false) {
     return (
-      <div className="w-full min-h-[92vh] md:min-h-[88vh] flex justify-center items-center text-[0.8rem] md:text-[1.5rem] lg:text-[2rem] pb-[2rem] pt-[0.5rem] lg:pb-[3rem] lg:pt-[1rem] flex-wrap gap-[1rem]">
+      <div className="w-full min-h-[92vh] md:min-h-[88vh] flex justify-center items-center">
         <TailSpin
           visible={true}
           height="100"
@@ -82,7 +85,7 @@ const page = () => {
     );
   } else if (error) {
     return (
-      <div className="w-full min-h-[92vh] md:min-h-[88vh] flex justify-center items-center text-[0.8rem] md:text-[1.5rem] lg:text-[2rem] pb-[2rem] pt-[0.5rem] lg:pb-[3rem] lg:pt-[1rem] flex-wrap gap-[1rem] text-white">
+      <div className="w-full min-h-[92vh] md:min-h-[88vh] flex justify-center items-center text-[3.5vw] text-white">
         <h1>Something went wrong</h1>
       </div>
     );
@@ -112,8 +115,9 @@ const page = () => {
                 animate={{
                   translateY: isVisible ? 0 : "4rem",
                   opacity: isVisible ? 1 : 0,
+                  display:isVisible ? "block" : "none"
                 }}
-                className="w-[19rem] h-[10rem] overflow-y-auto bg-[#283450] rounded-lg absolute top-[22%] p-[0.35em]"
+                className="w-[19rem] h-[10rem] overflow-y-auto bg-[#283450] rounded-lg absolute top-[22%] p-[0.35em] z-10"
               >
                 {currencies.map((item, index) => {
                   return (
@@ -123,6 +127,7 @@ const page = () => {
                       onClick={() => {
                         setIsVisible(false);
                         setCurrency(item);
+                        currency !== item ? setLoading(true) : "";
                       }}
                     >
                       {item.name} ({item.code.toUpperCase()})
@@ -136,30 +141,54 @@ const page = () => {
             {coins.map((item, index) => {
               return (
                 <div
-                  key={index}
                   className="w-[90%] h-[6rem] md:h-[8rem] lg:h-[10rem] xl:w-[47%] flex justify-between items-center p-[1.5em] box bg-[#1c2438] text-[0.9em] text-white rounded-lg hover:bg-[#20293f] transition-all ease-in duration-200"
+                  key={index}
                 >
-                  <div className="flex items-center gap-[0.7em] h-[80%]">
-                    <img
-                      src={item.image}
-                      alt=""
-                      className="h-full object-cover object-center"
-                    />
-                    <h1>{item.name}</h1>
-                  </div>
-                  <div className="whitespace-nowrap text-[0.7em] flex flex-col gap-[1em] justify-between items-center text-left">
+                  <Link
+                    href={`/coins/${item.id}`}
+                    className="h-full w-full flex items-center"
+                  >
+                    <div className="w-full flex items-center gap-[0.7em] h-[85%]">
+                      <img
+                        src={item.image}
+                        alt=""
+                        className="h-full object-cover object-center"
+                      />
+                      <h1>{item.name}</h1>
+                    </div>
+                  </Link>
+                  <div className="whitespace-nowrap text-[0.7em] flex flex-col gap-[0.5em] justify-between items-end text-left">
                     <h1 className="text-[#ca8a04]">
                       Price:{" "}
                       <span className="text-[1.2em]">
-                        {item.current_price.toFixed(0)}
+                        {item.current_price
+                          .toFixed(0)
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                        {currency.code.toUpperCase()}
                       </span>
                     </h1>
-                    <h1>
-                      Market cap rank:{" "}
-                      <span className="text-[#ca8a04] text-[1.2em]">
-                        {item.market_cap_rank}
+                    <div className="flex items-center justify-center gap-[0.3em] text-[1.2em]">
+                      <span
+                        className={`${
+                          item.price_change_percentage_24h > 0
+                            ? "text-green-600"
+                            : "text-red-600"
+                        }`}
+                      >
+                        {item.price_change_percentage_24h > 0 ? "+" : ""}
+                        {item.price_change_percentage_24h}{" "}
                       </span>
-                    </h1>
+                      <span
+                        className={
+                          item.price_change_percentage_24h > 0
+                            ? "rotate-180 text-green-600"
+                            : "text-red-600"
+                        }
+                      >
+                        <FaArrowDownLong />
+                      </span>
+                    </div>
                   </div>
                 </div>
               );

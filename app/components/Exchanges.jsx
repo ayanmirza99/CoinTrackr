@@ -23,13 +23,13 @@ const Exchanges = ({ loading, exchanges }) => {
                                     <h1>{item.name}</h1>
                                 </div>
                                 <div className='whitespace-nowrap text-[0.7em] flex flex-col items-center text-left'>
-                                    <h1 className='text-[#ca8a04]'>
-                                        Trade Vol. 24h BTC: <span className='text-[1.2em]'>
+                                    <h1 className=''>
+                                        Trade Vol. 24h BTC: <span className='text-[1.2em] text-[#ca9c04]'>
                                             {item.trade_volume_24h_btc.toFixed(0)}
                                         </span>
                                     </h1>
                                     <h1>
-                                        Trust Rank: <span className='text-[#ca8a04] text-[1.2em]'>
+                                        Trust Rank: <span className='text-[#ca9c04] text-[1.2em]'>
                                             {item.trust_score_rank}
                                         </span>
                                     </h1>
