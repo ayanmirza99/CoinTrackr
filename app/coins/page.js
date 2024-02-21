@@ -1,13 +1,12 @@
 "use client";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { TailSpin } from "react-loader-spinner";
-import { baseURL } from "../components/baseData";
+import { baseURL, fetchData } from "../components/baseData";
 import { motion } from "framer-motion";
 import { FaAngleDown } from "react-icons/fa";
 import { FaArrowDownLong } from "react-icons/fa6";
 import { currencies } from "../components/baseData";
 import Link from "next/link";
+import Loader from "../components/Loader";
 
 const page = () => {
   const [coins, setCoins] = useState([]);
@@ -18,75 +17,18 @@ const page = () => {
     name: "United States Dollar",
     code: "usd",
   });
-
-  // const currencies = [
-  //   {
-  //     name: "Pakistani Rupee",
-  //     code: "pkr",
-  //   },
-  //   {
-  //     name: "Euro",
-  //     code: "eur",
-  //   },
-  //   {
-  //     name: "United States Dollar",
-  //     code: "usd",
-  //   },
-  //   {
-  //     name: "Indian Rupee",
-  //     code: "inr",
-  //   },
-  //   {
-  //     name: "Japanese Yen",
-  //     code: "jpy",
-  //   },
-  //   {
-  //     name: "Kuwaiti Dinar",
-  //     code: "kwd",
-  //   },
-  //   {
-  //     name: "Canadian Dollar",
-  //     code: "cad",
-  //   },
-  // ];
-
-  const getCoins = async () => {
-    try {
-      const { data } = await axios.get(
-        `${baseURL}/coins/markets?vs_currency=${currency.code}&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en`
-      );
-      setCoins(data);
-    } catch (error) {
-      console.log(error);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const url = `${baseURL}/coins/markets?vs_currency=${currency.code}&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en`;
 
   useEffect(() => {
-    getCoins();
+    fetchData(url, setCoins, setLoading, setError);
   }, [currency]);
 
   if (loading && error === false) {
-    return (
-      <div className="w-full min-h-[92vh] md:min-h-[88vh] flex justify-center items-center">
-        <TailSpin
-          visible={true}
-          height="100"
-          width="100"
-          color="#ca8a04"
-          ariaLabel="tail-spin-loading"
-          radius="0"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
-      </div>
-    );
+    return <Loader />;
   } else if (error) {
     return (
       <div className="w-full min-h-[92vh] md:min-h-[88vh] flex justify-center items-center text-[3.5vw] text-white">
-        <h1>Something went wrong</h1>
+        <h1>Error</h1>
       </div>
     );
   } else {
@@ -115,7 +57,7 @@ const page = () => {
                 animate={{
                   translateY: isVisible ? 0 : "4rem",
                   opacity: isVisible ? 1 : 0,
-                  display:isVisible ? "block" : "none"
+                  display: isVisible ? "block" : "none",
                 }}
                 className="w-[19rem] h-[10rem] overflow-y-auto bg-[#283450] rounded-lg absolute top-[22%] p-[0.35em] z-10"
               >
