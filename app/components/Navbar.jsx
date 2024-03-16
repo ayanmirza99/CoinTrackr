@@ -11,7 +11,7 @@ const Navbar = () => {
     return (
         <>
             <section className='w-full h-[8vh] md:h-[12vh] bg-[#1c2438] flex items-center justify-between text-[2rem] sm:text-[2.5rem] md:text-[3.2rem] lg:text-[4.5rem] text-[#ca8a04] px-[2vw] rounded-b-xl box'>
-                <h1 className='text-[1em] font-extrabold whitespace-nowrap'>CoinTrakr</h1>
+                <h1 className='text-[1em] font-extrabold whitespace-nowrap font-[gothic]'>CoinTrakr</h1>
                 <div className='flex gap-[3vw] md:gap-[1.5vw] text-[0.4em]'>
                     <Link href="/">
                         <div className='flex flex-col relative'>

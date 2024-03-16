@@ -12,7 +12,7 @@ const Moadal3d = () => {
     <div>
       <Canvas dpr={[1, 2]} shadows camera={{ fov: 45 }} style={{ position: "absolute", top: "0", height:"100%", width:"100%" }}  >
 
-        <color attach="background" args={['#151929']} />
+        <color attach="background" args={['#171b2c']} />
         <ambientLight intensity={-1} />
 
         <PresentationControls speed={1.5} global zoom={.5} polar={[-0.1, Math.PI / 4]} >

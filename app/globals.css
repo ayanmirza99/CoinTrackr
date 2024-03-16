@@ -5,8 +5,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap");
 
 @font-face {
-  font-family: Heading;
-  src: url(/public/ITC\ Avant\ Garde\ Gothic\ Bold.otf);
+  font-family: "Heading";
+  src: url("/ITC Avant Garde Gothic Bold.otf");
+}
+@font-face {
+  font-family: "gothic";
+  src: url("/century-gothic.ttf");
 }
 
 * {
@@ -14,9 +18,10 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  user-select: none;
 }
 body {
-  background: #151929;
+  background: #171b2c;
 }
 *::-webkit-scrollbar {
   width: 6px;
@@ -33,4 +38,9 @@ body {
 }
 .box {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+@media (width < 769px) {
+  *::-webkit-scrollbar {
+    width: 0;
+  }
 }

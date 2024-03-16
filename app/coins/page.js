@@ -7,6 +7,7 @@ import { FaArrowDownLong } from "react-icons/fa6";
 import { currencies } from "../components/baseData";
 import Link from "next/link";
 import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 const page = () => {
   const [coins, setCoins] = useState([]);
@@ -27,9 +28,7 @@ const page = () => {
     return <Loader />;
   } else if (error) {
     return (
-      <div className="w-full min-h-[92vh] md:min-h-[88vh] flex justify-center items-center text-[3.5vw] text-white">
-        <h1>Error</h1>
-      </div>
+      <Error/>
     );
   } else {
     return (

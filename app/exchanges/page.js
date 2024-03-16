@@ -3,6 +3,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { baseURL, fetchData } from "../components/baseData";
 import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 const page = () => {
   const [exchanges, setExchanges] = useState([]);
@@ -17,7 +18,7 @@ const page = () => {
   if (loading && error === false) {
     return <Loader />;
   } else if (error && loading === false) {
-    return <h1>kadcnnokd</h1>;
+    return <Error/>;
   } else {
     return (
       <div className="flex flex-col">

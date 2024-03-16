@@ -8,6 +8,7 @@ import { FaArrowDownLong } from "react-icons/fa6";
 import React, { useEffect, useState } from "react";
 import CoinChart from "@/app/components/CoinChart";
 import Loader from "@/app/components/Loader";
+import Error from "@/app/components/Error";
 
 const page = () => {
   let { id } = useParams();
@@ -29,11 +30,9 @@ const page = () => {
 
   if (loading && error === false) {
     return <Loader />;
-  } else if (error && loading === false) {
+  } else if (error) {
     return (
-      <div className="w-full min-h-[92vh] md:min-h-[88vh] flex justify-center items-center text-white text-[3.5vw]">
-        Something went wrong.
-      </div>
+      <Error/>
     );
   } else {
     return (
