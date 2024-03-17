@@ -67,10 +67,10 @@ footer {
 }
 
 @media (width < 420px) {
-  .section{
+  .section {
     gap: 20px;
   }
-  footer{
+  footer {
     height: 30vh;
   }
 }

@@ -5,10 +5,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap");
 
 @font-face {
-  font-family: "Heading";
-  src: url("/ITC Avant Garde Gothic Bold.otf");
-}
-@font-face {
   font-family: "gothic";
   src: url("/century-gothic.ttf");
 }

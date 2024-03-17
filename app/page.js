@@ -116,7 +116,7 @@ const page = () => {
     <>
       <div
         ref={screenLoader}
-        className="h-screen w-full absolute top-0 left-0 bg-black z-10 flex justify-center items-center text-[#ca8a04] text-[5vw] font-bold"
+        className="h-screen w-full absolute top-0 left-0 bg-black z-10 flex justify-center items-center text-[#ca8a04] text-[8vw] lg:text-[5vw] font-bold"
       >
         <h1 ref={screenLoaderHeading} className="font-[gothic]">
           CoinTrackr
@@ -160,7 +160,7 @@ const page = () => {
         </div>
         <div
           ref={page2}
-          className="w-full h-[60vh] md:h-[50vh] lg:h-[70vh] flex justify-center items-center flex-col gap-[3vw] "
+          className="w-full h-[60vh] lg:h-[70vh] flex justify-center items-center flex-col gap-[3vw] "
         >
           <div className="text-white text-[4vw] flex items-center font-medium h-[5.38vw] font-[gothic] overflow-y-hidden">
             <div

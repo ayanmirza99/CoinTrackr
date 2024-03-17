@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { Triangle } from 'react-loader-spinner';
+import Error from './Error';
 
 ChartJS.register(
     CategoryScale,
@@ -70,7 +71,7 @@ const CoinChart = ({ id, currency_code }) => {
         )
     } else if (error && loading === false) {
         return (
-            <h1>Error</h1>
+            <Error />
         )
     } else {
         return (

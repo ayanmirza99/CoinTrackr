@@ -27,9 +27,7 @@ const page = () => {
   if (loading && error === false) {
     return <Loader />;
   } else if (error) {
-    return (
-      <Error/>
-    );
+    return <Error />;
   } else {
     return (
       <>

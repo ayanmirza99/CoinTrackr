@@ -31,9 +31,7 @@ const page = () => {
   if (loading && error === false) {
     return <Loader />;
   } else if (error) {
-    return (
-      <Error/>
-    );
+    return <Error />;
   } else {
     return (
       <div className="w-full min-h-[92vh] md:min-h-[88vh] flex flex-col lg:flex-row justify-center items-center text-white text-[1.3rem] md:text-[1.6rem] lg:text-[1.6rem]">
