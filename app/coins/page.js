@@ -34,9 +34,9 @@ const page = () => {
         <div className="w-full min-h-[92vh] md:min-h-[88vh] flex flex-col text-[0.8rem] md:text-[1.5rem] lg:text-[2rem] pb-[2rem] pt-[0.5rem] lg:pb-[3rem] lg:pt-[1rem] gap-[1rem]">
           <div className="px-[0.9em] text-[1.8em] text-[#ca8a04] flex flex-col md:flex-row items-center justify-between">
             <h1 className="font-semibold">Coins</h1>
-            <div className="text-[0.35em] text-white">
+            <div className="text-[0.5em] md:text-[0.35em] text-white">
               <div
-                className="w-[19rem] h-[3rem] bg-[#283450] rounded-lg flex items-center justify-between px-[0.5em] relative cursor-pointer"
+                className="w-[19rem] h-[3rem] bg-[#283450] rounded-lg flex items-center justify-between px-[0.8em] md:px-[0.5em] relative cursor-pointer"
                 onClick={() => setIsVisible(!isVisible)}
               >
                 <h1>
@@ -56,7 +56,7 @@ const page = () => {
                   opacity: isVisible ? 1 : 0,
                   display: isVisible ? "block" : "none",
                 }}
-                className="w-[19rem] h-[10rem] overflow-y-auto bg-[#283450] rounded-lg absolute top-[22%] p-[0.35em] z-10"
+                className="w-[19rem] h-[10rem] overflow-y-auto bg-[#283450] rounded-lg absolute top-[20%] md:top-[22%] p-[0.35em] z-10"
               >
                 {currencies.map((item, index) => {
                   return (
@@ -97,15 +97,13 @@ const page = () => {
                     </div>
                   </Link>
                   <div className="whitespace-nowrap text-[0.7em] flex flex-col gap-[0.5em] justify-between items-end text-left">
-                    <h1 className="text-[#ca8a04]">
+                    <h1 className="text-[#ca8a04] text-[1.2em]">
                       Price:{" "}
-                      <span className="text-[1.2em]">
                         {item.current_price
                           .toFixed(0)
                           .toString()
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
                         {currency.code.toUpperCase()}
-                      </span>
                     </h1>
                     <div className="flex items-center justify-center gap-[0.3em] text-[1.2em]">
                       <span

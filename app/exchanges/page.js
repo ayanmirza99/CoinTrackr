@@ -30,7 +30,7 @@ const page = () => {
             return (
               <div
                 key={index}
-                className="w-[90%] h-[6rem] md:h-[8rem] lg:h-[10rem] xl:w-[47%] flex justify-between items-center p-[1.5em] box bg-[#1c2438] text-[0.9em] text-white rounded-lg hover:bg-[#20293f] transition-all ease-in duration-200"
+                className="w-[90%] h-[6rem] md:h-[8rem] lg:h-[10rem] xl:w-[47%] flex justify-between items-center p-[1.5em] box bg-[#1c2438] text-[1em] text-white rounded-lg hover:bg-[#20293f] transition-all ease-in duration-200"
               >
                 <div className="flex items-center gap-[0.5em] h-[80%]">
                   <img

@@ -76,7 +76,7 @@ const CoinChart = ({ id, currency_code }) => {
     } else {
         return (
             <div className='flex flex-col justify-between gap-[0.5em] w-full h-full'>
-                <div className='w-full h-max'>
+                <div className='w-full h-full'>
                     <Line data={data} options={
                         {
                             elements: {
@@ -90,10 +90,10 @@ const CoinChart = ({ id, currency_code }) => {
                             },
                         }} className='mt-0 md:mt-[6rem]' />
                 </div>
-                <div className='flex gap-[0.3em] mx-auto lg:mx-0'>
+                <div className='flex flex-wrap justify-center items-center md:justify-normal md:items-start gap-[0.3em] mx-auto lg:mx-0'>
                     {chartDuration.map((item, index) => {
                         return (
-                            <button key={index} id={item} className={`text-white w-[7rem] ${active === item ? "bg-[#ca8a04]" : "bg-[#faa907f5]"} py-[0.4em] px-[0.5em] text-[0.3em] font-semibold rounded-lg`}
+                            <button key={index} id={item} className={`text-white w-[7rem] md:w-[5rem] lg:w-[7rem] ${active === item ? "bg-[#ca8a04]" : "bg-[#faa907f5]"} py-[0.4em] px-[0.5em] text-[0.2em] md:text-[0.3em] font-semibold rounded-lg`}
                                 onClick={() => {
                                     setDays(item)
                                     setActive(item)
